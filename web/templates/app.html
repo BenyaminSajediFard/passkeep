@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="http://127.0.0.1:8081/static/css/app.css" />
+    <link
+      rel="shortcut icon"
+      type="image/png"
+      href="../static/images/favicon.png"
+    />
+    <title>🏡 &VerticalLine; {{ result['username'] }}</title>
+  </head>
+  <body>
+    <nav>
+      <div class="logo-main-contain">
+        <img
+          class="logo-main"
+          src="http://127.0.0.1:8081/static/images/favicon.png"
+          alt="passkeep logo"
+        />
+        <p class="action-desc logo-desc">The Mighty Passkeep! 💪</p>
+      </div>
+      <a class="btn-home nav-link" href="{{ result['link'] }}home">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="currentColor"
+          class="nav-icon"
+        >
+          <path
+            d="M11.47 3.84a.75.75 0 011.06 0l8.69 8.69a.75.75 0 101.06-1.06l-8.689-8.69a2.25 2.25 0 00-3.182 0l-8.69 8.69a.75.75 0 001.061 1.06l8.69-8.69z"
+          />
+          <path
+            d="M12 5.432l8.159 8.159c.03.03.06.058.091.086v6.198c0 1.035-.84 1.875-1.875 1.875H15a.75.75 0 01-.75-.75v-4.5a.75.75 0 00-.75-.75h-3a.75.75 0 00-.75.75V21a.75.75 0 01-.75.75H5.625a1.875 1.875 0 01-1.875-1.875v-6.198a2.29 2.29 0 00.091-.086L12 5.43z"
+          />
+        </svg>
+        <div class="action-desc home">
+          <h3 class="action-desc-heading">Home</h3>
+          Go back to home 🏡
+        </div>
+      </a>
+      <a
+        class="btn-passcheck nav-link"
+        {%
+        if
+        content[0]
+        %}
+        href="http://127.0.0.1:8081/{{ result['username'] }}/is-pwned/{{ content[0] }}"
+        {%
+        else
+        %}
+        href="http://127.0.0.1:8081/{{ result['username'] }}/pass-checker"
+        {%
+        endif
+        %}
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="currentColor"
+          class="nav-icon"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M12.516 2.17a.75.75 0 00-1.032 0 11.209 11.209 0 01-7.877 3.08.75.75 0 00-.722.515A12.74 12.74 0 002.25 9.75c0 5.942 4.064 10.933 9.563 12.348a.749.749 0 00.374 0c5.499-1.415 9.563-6.406 9.563-12.348 0-1.39-.223-2.73-.635-3.985a.75.75 0 00-.722-.516l-.143.001c-2.996 0-5.717-1.17-7.734-3.08zm3.094 8.016a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z"
+            clip-rule="evenodd"
+          />
+        </svg>
+
+        <div class="action-desc pass-check">
+          <h3 class="action-desc-heading">Password Checker</h3>
+          Checks if a password has been pawned before or is still safe to use...
+        </div>
+      </a>
+      <a
+        class="btn btn-red btn-sign-out nav-link"
+        href="http://127.0.0.1:8081/{{ result['username'] }}/sgn-ot"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="currentColor"
+          class="nav-icon-red"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M7.5 3.75A1.5 1.5 0 006 5.25v13.5a1.5 1.5 0 001.5 1.5h6a1.5 1.5 0 001.5-1.5V15a.75.75 0 011.5 0v3.75a3 3 0 01-3 3h-6a3 3 0 01-3-3V5.25a3 3 0 013-3h6a3 3 0 013 3V9A.75.75 0 0115 9V5.25a1.5 1.5 0 00-1.5-1.5h-6zm5.03 4.72a.75.75 0 010 1.06l-1.72 1.72h10.94a.75.75 0 010 1.5H10.81l1.72 1.72a.75.75 0 11-1.06 1.06l-3-3a.75.75 0 010-1.06l3-3a.75.75 0 011.06 0z"
+            clip-rule="evenodd"
+          />
+        </svg>
+        <div class="action-desc sign-out">
+          <h3 class="action-desc-heading">Sign Out</h3>
+          The proper way to quit the app without any risk of data leak/loss or
+          leaving database open and unencrypted 👌
+        </div>
+      </a>
+    </nav>
+    <menu>
+      <a
+        class="btn btn-new"
+        href="http://127.0.0.1:8081/{{ result['username'] }}/gen-pass"
+      >
+        NEW
+        <p class="action-desc new">
+          Creates a new item with your preferred password security level and
+          adds it to the your database.
+        </p>
+      </a>
+      <a
+        class="btn btn-search"
+        href="http://127.0.0.1:8081/{{ result['username'] }}/se-term"
+      >
+        SEARCH
+        <p class="action-desc search">
+          Query for a certain item in the database and retrieve it.
+        </p>
+      </a>
+      <a
+        class="btn btn-edit"
+        href="http://127.0.0.1:8081/{{ result['username'] }}/ed-id{{ content[0] }}"
+      >
+        EDIT
+        <p class="action-desc edit">
+          Retrieve selected item from the database and edit it as you see fit...
+        </p>
+      </a>
+      <a
+        class="btn btn-del"
+        href="http://127.0.0.1:8081/{{ result['username'] }}/del-id{{ content[0] }}"
+      >
+        DELETE
+        <p class="action-desc delete">
+          Deletes the selected item in sidebar from database<br />(obviously!)
+        </p>
+      </a>
+    </menu>
+    <section>
+      {% for item in result["data"] %} {% if content and content[0]|int ==
+      item[0]|int %}
+      <a
+        class="data-item active-data-item"
+        href="{{ result['link'] }}home/{{ item[0] }}"
+      >
+        {{ item[1] }}
+      </a>
+      {% else %}
+      <a class="data-item" href="{{ result['link'] }}home/{{ item[0] }}">
+        {{ item[1] }}
+      </a>
+      {% endif %} {% endfor %}
+    </section>
+    <main>
+      <h1 class="main-section-heading">Main View</h1>
+      {% if content %}
+      <p class="data-content"><span>Source:</span> {{ content[1] }}</p>
+      <p class="data-content"><span>Password:</span> {{ content[2] }}</p>
+      {% else %}
+      <p class="main-content" style="padding: 105px">
+        Choose an item from the right sidebar 👈 to show in details here.<br />If
+        you don't have any data stored click New action button 🆕 to create
+        one...
+      </p>
+      {% endif %}
+    </main>
+    <aside></aside>
+    <script src="../static/script.js"></script>
+  </body>
+</html>

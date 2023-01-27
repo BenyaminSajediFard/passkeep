@@ -1,0 +1,9 @@
+#!/usr/bin/bash
+
+echo
+echo "Launching a local server to run Passkeep..."
+echo "Press Ctrl + D to stop 🛑 the running server or Enter to send it to background"
+python3 web/app.py &
+python3 -m webbrowser -t "http://127.0.0.1:8081" 2>/dev/null
+
+exit 0

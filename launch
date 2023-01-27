@@ -1,0 +1,81 @@
+#!/bin/bash
+
+# Author: Benyamin Sajedi Fard
+# Created: 21th JAN 2023
+# Last Modified: 26th JAN 2023
+
+# Description:
+# main launcher script for the passkeep program.
+
+echo "Welcome to Passkeep"
+WEB="./web/passkeep-web"
+CLI="./cli/passkeep-cli"
+BASH=$(which bash)
+REQ="requirements.txt"
+SECRET="database/secret.py"
+
+activate() {
+    # activate the python virtualenv
+    . venv/bin/activate
+    echo "venv activated successfully..."
+}
+
+create_venv() {
+    #creates a virtualnv (in case of missing)
+    [[ -d "venv" ]] || {
+        echo "No virtual environments was found to install packages, creating one now..."
+        virtualenv venv --download
+        activate
+        python3 setup.py install
+    } && {
+        echo "Virtualenv found. activating it now..."
+        activate
+    }
+}
+echo
+
+create_venv
+if [ "$(cat $REQ)" = "$(pip freeze)" ]; then
+    echo "All required packages found!"
+else
+    echo "Missing packages!"
+    echo "Trying to pip install neccesary packages..."
+    pip install -r $REQ
+fi
+
+echo
+mkdir -p database database/.files
+[[ -f $SECRET ]] && echo "$SECRET already exists." || {
+    echo "Secret file does not exists. creating one now..."
+    echo "id = '$(openssl rand 32 | openssl base64)'" >$SECRET
+}
+
+if [[ $# -eq 0 ]]; then
+    echo
+    echo "Enter w to launch web UI |OR| enter c to start CLI mode: [w/c]"
+    read -t 30 -p ">> " MODE
+    if [[ "${MODE}" = "w" || "${MODE}" = "W" ]]; then
+        $WEB
+        exit 0
+    elif [[ "${MODE}" = "c" || "${MODE}" = "C" ]]; then
+        $CLI
+        exit 0
+    else
+        echo
+        echo "Wrong value or timeout reach, try again..."
+        exit 1
+    fi
+else
+    if [[ $1 = "web" ]]; then
+        $WEB
+        exit 0
+    elif [[ $1 = "cli" ]]; then
+        $CLI
+        exit 0
+    else
+        echo
+        echo "Wrong argument provided."
+        exit 1
+    fi
+fi
+exit 0

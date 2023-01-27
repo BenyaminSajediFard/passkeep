@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="http://127.0.0.1:8081/static/css/se-action.css"
+    />
+    <title>Passkeep &mdash; Search</title>
+    <link
+      rel="shortcut icon"
+      type="image/png"
+      href="../static/images/favicon.png"
+    />
+  </head>
+  <body>
+    <div class="bg-main">
+      <h1 class="heading-primary">&GreaterGreater; Search Database</h1>
+      <img
+        class="img-1"
+        src="../static/images/img-1.jpg"
+        alt="fingerprint-indicator"
+      />
+      <form class="page-form" action="home/result" method="post">
+        <div class="form-input-username">
+          <label class="form-label" for="search-term">Search term:</label>
+          <input
+            class="form-input"
+            id="search-term"
+            name="term"
+            type="text"
+            required
+          />
+        </div>
+        <div class="form-input-select">
+          <label class="form-label">Search by:</label>
+          <select
+            class="form-input select-input"
+            name="search-param"
+            title="search-term"
+            required
+          >
+            <option value="id">ID</option>
+            <option value="source">Source</option>
+            <option value="password">Password</option>
+          </select>
+        </div>
+        <button class="btn submit-btn" type="submit">Search</button>
+      </form>
+    </div>
+    <a class="signin-link" href="http://127.0.0.1:8081/{{ user }}/home">
+      Go back to home 🏡
+    </a>
+  </body>
+</html>

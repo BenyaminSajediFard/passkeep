@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    {% if result["redirect"] %}
+    <meta
+      http-equiv="refresh"
+      content="{{ result['timeout'] }}; url = {{ result['redirect'] }}"
+    />
+    {% endif %}
+    <title>Passkeep &mdash; Safety like never before!</title>
+    <link
+      rel="shortcut icon"
+      type="image/png"
+      href="static/images/favicon.png"
+    />
+    <style>
+      *,
+      *::after,
+      *::before {
+        margin: 0;
+        padding: 0;
+        box-sizing: inherit;
+      }
+
+      *:focus {
+        outline: none;
+        text-shadow: 0 0 0.8rem rgba(255, 255, 255, 0.2);
+      }
+
+      html {
+        font-size: 62.5%;
+      }
+
+      body {
+        box-sizing: border-box;
+        font-family: "Anonymous Pro", "Roboto Mono", sans-serif;
+        font-size: 1.6rem;
+        background-color: #000;
+      }
+
+      .container {
+        height: 95vh;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 6rem;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .heading-primary {
+        font-size: 3.2rem;
+        font-weight: 500;
+        color: #bbb;
+        z-index: 1;
+      }
+
+      .content {
+        text-align: center;
+        width: 45%;
+        line-height: 1.8;
+        font-size: 2rem;
+        font-weight: 500;
+        color: #eee;
+        z-index: 1;
+      }
+
+      .stable {
+        text-align: center;
+        color: #aaa;
+        font-size: 1.4rem;
+        font-weight: 400;
+        text-decoration: none;
+        position: absolute;
+        bottom: 10rem;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        transition: transform 200ms;
+      }
+
+      .stable:hover {
+        color: #2c886e;
+        text-shadow: 0 0.7rem 1.5rem rgba(255, 255, 255, 0.2);
+        transform: translate(-51%, -60%);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="heading-primary">{{ result["title"] }}</h1>
+      <p class="content">{{ result["content"] }}</p>
+    </div>
+    {% if result["link"] %}
+    <a class="stable" href="{{ result['link'] }}">
+      {{result["link-text"] if result["link-text"] else "Continue"}}
+    </a>
+    {% else %}
+    <p>Have a good day!</p>
+    {% endif %}
+  </body>
+</html>

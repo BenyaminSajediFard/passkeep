@@ -1,0 +1,4 @@
+#!/usr/bin/bash
+
+echo
+python3 'cli/main.py' $@

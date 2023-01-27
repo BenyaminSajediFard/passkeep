@@ -1,0 +1,109 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  box-sizing: border-box;
+  font-family: "Anonymous Pro", "Roboto Mono", sans-serif;
+  font-size: 1.6rem;
+  position: relative;
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background-color: #222;
+}
+::-webkit-scrollbar-thumb {
+  border-radius: 2px;
+  background-color: #999;
+}
+::-webkit-scrollbar-thumb:hover {
+  border-radius: 2px;
+  background-color: #fff;
+}
+
+.bg-main {
+  background-image: linear-gradient(to right, #000, #222);
+  height: 100vh;
+  width: 100%;
+}
+
+.main-nav {
+  position: absolute;
+  left: 0;
+  top: 7rem;
+  display: block;
+  width: 100%;
+  z-index: 1;
+}
+
+.nav-list {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  list-style: none;
+  gap: 100rem;
+}
+
+.nav-list li {
+  color: #aaa;
+}
+
+a:visited {
+  color: #aaa;
+}
+
+.nav-link:link,
+.nav_link:visited {
+  color: #aaa !important;
+  font-size: 1.8rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 350ms;
+}
+
+.nav-link:hover,
+.nav_link:active {
+  color: #2c886e;
+  text-shadow: 0 0 1.5rem rgba(255, 255, 255, 0.4);
+}
+
+.logo-main {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+}
+
+.heading-primary {
+  position: absolute;
+  top: 78%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #aaa;
+  z-index: 1;
+}
+
+.heading-primary span {
+  color: #2c886e;
+}
+
+.webapp-version {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #999;
+  position: absolute;
+  bottom: 1rem;
+  left: 1rem;
+}

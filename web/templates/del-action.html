@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../static/css/del-action.css" />
+    <title>Passkeep &mdash; Delete</title>
+    <link
+      rel="shortcut icon"
+      type="image/png"
+      href="../static/images/favicon.png"
+    />
+  </head>
+  <body>
+    <main class="bg-main">
+      <h1 class="heading-primary">&GreaterGreater; Delete Entry</h1>
+      <img
+        class="img-1"
+        src="http://127.0.0.1:8081/static/images/img-1.jpg"
+        alt="fingerprint-indicator"
+      />
+      <form class="page-form" action="deleted" method="post">
+        <label class="form-label">
+          Do you want to delete <span>{{ content['source'] }}</span> from
+          database?
+        </label>
+        <button class="btn submit-btn" type="submit" name="{{ content['id'] }}">
+          Delete
+        </button>
+        <button class="btn submit-btn" type="submit" name="cancel">
+          Cancel
+        </button>
+      </form>
+    </main>
+  </body>
+</html>

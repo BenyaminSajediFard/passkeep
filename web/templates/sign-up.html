@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="static/css/register-style.css" />
+    <title>Passkeep &mdash; Safety like never before!</title>
+    <link
+      rel="shortcut icon"
+      type="image/png"
+      href="static/images/favicon.png"
+    />
+  </head>
+  <body>
+    <div class="bg-main">
+      <h1 class="heading-primary">&GreaterGreater; User Sign Up</h1>
+      <img
+        class="img-1"
+        src="static/images/img-1.jpg"
+        alt="fingerprint-indicator"
+      />
+      <form class="page-form" action="rgt-rs" method="post">
+        <div>
+          <label class="form-label" for="username">Username</label>
+          <input
+            class="form-input"
+            id="username"
+            name="username"
+            type="text"
+            value="{{ user }}"
+            required
+          />
+        </div>
+        <div class="password-inputs">
+          <div>
+            <label class="form-label" for="pass1">Enter password</label>
+            <input
+              class="form-input"
+              id="pass1"
+              name="password-original"
+              type="password"
+              required
+            />
+          </div>
+          <div>
+            <label class="form-label" for="pass2">Confirm password</label>
+            <input
+              class="form-input"
+              id="pass2"
+              name="password-confirm"
+              type="password"
+              required
+            />
+          </div>
+        </div>
+        <div>
+          <button class="btn submit-btn" type="submit">Done</button>
+          <button class="btn reset-btn" type="reset">Clear</button>
+        </div>
+      </form>
+    </div>
+    <a class="signin-link" href="http://127.0.0.1:8081/sign-in">
+      go to sign-in page
+    </a>
+  </body>
+</html>

@@ -1,0 +1,10 @@
+__pycache__/
+.vscode/
+venv/
+database/
+database/.files
+secret.py
+dist/
+build/
+database.egg-info
+secret.egg-info
